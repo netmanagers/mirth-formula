@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+Debian:
+  placeholder: false
+RedHat:
+  placeholder: false
+CentOS:
+  placeholder: false
+openSUSE:
+  placeholder: false
+FreeBSD:
+  placeholder: false
+Arch:
+  placeholder: false

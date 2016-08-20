@@ -1,0 +1,11 @@
+mirth:
+  pkg: mirthconnect
+  pkg_source: 'http://downloads.mirthcorp.com/connect/3.4.1.8057.b139/mirthconnect-3.4.1.8057.b139-linux.rpm'
+  service:
+    name: 'mirthconnect'
+    file: '/usr/lib/systemd/system/mirthconnect.service'
+    source: 'salt://mirth/mirthconnect.service'
+  java:
+    pkg: 'java-1.7.0-openjdk-headless'
+    install: true
+
