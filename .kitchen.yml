@@ -9,8 +9,9 @@ platforms:
 
 provisioner:
   name: salt_solo
-  salt_version: 2015.8.8
+  salt_version: 2016.3.2
   data_path: test/shared
+  log_level: debug
   is_file_root: true
   pillars:
     top.sls:
@@ -19,7 +20,8 @@ provisioner:
           - mirth
     mirth.sls:
       mirth:
-        - pkg: mirthconnect
+        pkg:
+          name: mirthconnect
 
 suites:
   - name: mirth_install
