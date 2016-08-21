@@ -1,5 +1,5 @@
 # This file is managed by salt. Manual changes risk being overwritten.
-# Modify the values passed to the tomcat pillar instead.
+# Modify the values passed to the mirth pillar instead.
 
 [Unit]
 Description=Mirth Connect Interface Engine

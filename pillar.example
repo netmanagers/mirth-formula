@@ -1,10 +1,67 @@
 mirth:
-  pkg: mirthconnect
-  pkg_source: 'http://downloads.mirthcorp.com/connect/3.4.1.8057.b139/mirthconnect-3.4.1.8057.b139-linux.rpm'
+  pkg:
+    name: 'mirthconnect'
+    version: '3.4.1.8057.b139'
+    source: 'http://downloads.mirthcorp.com/connect/3.4.1.8057.b139/mirthconnect-3.4.1.8057.b139-linux.rpm'
+    # Computed with sha512sum /tmp/mirthconnect-3.4.1.8057.b139-linux.rpm
+    source_hash: 'sha512=00cd2c06a45e896b567bcdd2f662842b55e909a1dd72a39737b634e4f66a4a99f4fee06629ee0ab5e28a698154d9c3004f165f12e979f2ef50c587e2bf280a09'
+  user:
+    name: 'mirth'
+    create: true
+    gid_from_name: true
+    createhome: false
+    system: true
+  config:
+    file: '/opt/mirthconnect/conf/mirth.properties'
+    template: 'salt://mirth/files/mirth.properties'
+    maxheapsize: '512m'
+    keystore_path: '${dir.appdata}/keystore.jks'
+    keystore_storepass: '81uWxplDtB'
+    keystore_keypass: '81uWxplDtB'
+    keystore_type: 'JCEKS'
+    dir_appdata: 'appdata'
+    dir_tempdata: '${dir.appdata}/temp'
+    http_port: '8080'
+    https_port: '8443'
+    password_minlength: '0'
+    password_minupper: '0'
+    password_minlower: '0'
+    password_minnumeric: '0'
+    password_minspecial: '0'
+    password_retrylimit: '0'
+    password_lockoutperiod: '0'
+    password_expiration: '0'
+    password_graceperiod: '0'
+    password_reuseperiod: '0'
+    password_reuselimit: '0'
+    http_contextpath: '/'
+    server_url: ''
+    http_host: '0.0.0.0'
+    https_host: '0.0.0.0'
+    https_client_protocols:
+      - 'TLSv1.2'
+      - 'TLSv1.1'
+    https_server_protocols:
+      - 'TLSv1.2'
+      - 'TLSv1.1'
+      - 'SSLv2Hello'
+    https_ciphersuites:
+      - 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
+      - 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
+      - 'TLS_RSA_WITH_AES_256_GCM_SHA384'
+    server_startupdeploy: 'true'
+    server_includecustomlib: 'false'
+    configurationmap_path: '${dir.appdata}/configuration.properties'
+    database: 'derby'
+    database_driver: 'your_custom_driver'
+    database_max_connections: '20'
+    database_url: 'jdbc:derby:${dir.appdata}/mirthdb;create=true'
+    database_user: ''
+    database_password: ''
   service:
     name: 'mirthconnect'
     file: '/usr/lib/systemd/system/mirthconnect.service'
-    source: 'salt://mirth/mirthconnect.service'
+    source: 'salt://mirth/files/mirthconnect.service'
   java:
     pkg: 'java-1.7.0-openjdk-headless'
     install: true
