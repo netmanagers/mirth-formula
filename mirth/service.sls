@@ -21,5 +21,6 @@ mirth_service:
     - enable: true
     - require:
       - pkg: mirth_pkg
+      - user: mirth_user
       - file: mirth_service_file
 

@@ -12,7 +12,7 @@ User=mirth
 Group=mirth
 ExecStart=/opt/mirthconnect/mcservice start
 ExecStop=/opt/mirthconnect/mcservice stop
-ExecRestart=/opt/mirthconnect/mcservice restart
+#ExecRestart=/opt/mirthconnect/mcservice restart
 
 # Give a reasonable amount of time for the server to start up/shut down
 TimeoutSec=60

@@ -1,12 +1,22 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 mirth:
-  pkg: mirthconnect
-  pkg_source: 'http://downloads.mirthcorp.com/connect/3.4.1.8057.b139/mirthconnect-3.4.1.8057.b139-linux.rpm'
+  pkg:
+    name: 'mirthconnect'
+    version: '3.4.1.8057.b139'
+    source: 'http://downloads.mirthcorp.com/connect/3.4.1.8057.b139/mirthconnect-3.4.1.8057.b139-linux.rpm'
+    # Computed with sha512sum /tmp/mirthconnect-3.4.1.8057.b139-linux.rpm
+    source_hash: 'sha512=00cd2c06a45e896b567bcdd2f662842b55e909a1dd72a39737b634e4f66a4a99f4fee06629ee0ab5e28a698154d9c3004f165f12e979f2ef50c587e2bf280a09'
+  user:
+    name: 'mirth'
+    create: true
+    gid_from_name: true
+    createhome: false
+    system: true
   service:
     name: 'mirthconnect'
     file: '/usr/lib/systemd/system/mirthconnect.service'
-    source: 'salt://mirth/mirthconnect.service'
+    source: 'salt://mirth/files/mirthconnect.service'
   java:
     pkg: 'java-1.7.0-openjdk-headless'
     install: true
