@@ -37,7 +37,7 @@ mirth_pkg:
     #- normalize: true
     - sources:
       - {{ mirth.pkg.name }}: {{ package_local_copy }}
-    - require: 
+    - require:
       - file: mirth_downloaded_pkg
     - onfail:
       - cmd: get_currently_installed_version
