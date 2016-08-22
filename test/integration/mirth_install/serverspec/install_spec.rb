@@ -21,4 +21,22 @@ describe 'mirth/install.sls' do
   describe file('/home/mirth') do
     it { should_not exist }
   end
+
+  %w(appdata appdata/temp logs).each do |d|
+    describe file("/opt/mirthconnect/#{d}") do
+      it { should be_directory }
+      it { should be_owned_by 'mirth' }
+      it { should be_grouped_into 'mirth' }
+      it { should be_mode 755 }
+    end
+  end
+
+  describe file('/usr/lib/systemd/system/mirthconnect.service') do
+    it { should be_file }
+    its(:content) { should match('# This file is managed by salt.') }
+  end
+
+  describe service('mirthconnect') do
+    it { should be_running }
+  end
 end

@@ -18,14 +18,20 @@ provisioner:
       base:
         '*':
           - mirth
-    mirth.sls:
-      mirth:
-        pkg:
-          name: mirthconnect
 
 suites:
   - name: mirth_install
     provisioner:
+      pillars-from-files:
+        mirth.sls: mirth/defaults.yaml
+      state_top:
+        base:
+          '*':
+            - mirth
+  - name: mirth_config
+    provisioner:
+      pillars-from-files:
+        mirth.sls: pillar.example
       state_top:
         base:
           '*':

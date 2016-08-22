@@ -4,6 +4,9 @@
 {% from "mirth/map.jinja" import mirth with context %}
 
 {% set package_local_copy = '/tmp/' ~ mirth.pkg.name ~ '-' ~ mirth.pkg.version ~ '-linux.rpm' %}
+{% set logdir =  mirth.logdir if mirth.logdir is defined else '/opt/mirthconnect/logs' %}
+{% set appdatadir = mirth.config.dir_appdata if mirth.config.dir_appdata.startswith('/') else '/opt/mirthconnect/' ~ mirth.config.dir_appdata %}
+{% set tempdir = appdatadir ~ '/temp' if mirth.config.dir_tempdata == '${dir.appdata}/temp' else mirth.config.dir_tempdata %}
 
 # Install java if required
 {% if mirth.java.install %}
@@ -33,8 +36,6 @@ get_currently_installed_version:
 
 mirth_pkg:
   pkg.installed:
-    # The mirth package reports to be for the i386 arch
-    #- normalize: true
     - sources:
       - {{ mirth.pkg.name }}: {{ package_local_copy }}
     - require:
@@ -50,4 +51,16 @@ mirth_user:
     - createhome: {{ mirth.user.createhome }}
     - system: {{ mirth.user.system }}
 {% endif %}
+
+# Create logs, appdata and temp directories
+mirth_dirs:
+  file.directory:
+    - user: {{ mirth.user.name }}
+    - group: {{ mirth.user.name }}
+    - mode: '755'
+    - makedirs: true
+    - names:
+      - {{ logdir }}
+      - {{ appdatadir }}
+      - {{ tempdir }}
 

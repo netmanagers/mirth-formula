@@ -21,7 +21,7 @@ mirth:
     keystore_storepass: '81uWxplDtB'
     keystore_keypass: '81uWxplDtB'
     keystore_type: 'JCEKS'
-    dir_appdata: 'appdata'
+    dir_appdata: '/tmp/test/appdata'
     dir_tempdata: '${dir.appdata}/temp'
     http_port: '8080'
     https_port: '8443'

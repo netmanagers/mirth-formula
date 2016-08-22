@@ -21,7 +21,8 @@ Available states
 ``mirth``
 ---------
 
-Installs the mirth package, and starts the associated mirth service.
+Installs the mirth package and starts the associated mirth service, with the package's
+default configuration (by calling mirth.install and mirth.service)
 
 ``mirth.install``
 -----------------
@@ -32,4 +33,9 @@ Installs the mirth package
 -----------------
 
 Installs a mirth systemd file and starts the associated mirth service.
+
+``mirth.config``
+-----------------
+
+Manages mirth's configuration. See pillar.example and mirth/default.yaml for the possible parameters.
 

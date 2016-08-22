@@ -49,15 +49,15 @@ mirth:
       - 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
       - 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
       - 'TLS_RSA_WITH_AES_256_GCM_SHA384'
-    server_startupdeploy: 'true'
-    server_includecustomlib: 'false'
+    server_startupdeploy: true
+    server_includecustomlib: false
     configurationmap_path: '${dir.appdata}/configuration.properties'
-    database: 'derby'
+    database: 'postgres'
     database_driver: 'your_custom_driver'
-    database_max_connections: '20'
-    database_url: 'jdbc:derby:${dir.appdata}/mirthdb;create=true'
-    database_user: ''
-    database_password: ''
+    database_max_connections: '50'
+    database_url: 'jdbc:postgresql://your.db.host:5432/mirthdb'
+    database_user: 'mirthuser'
+    database_password: 'mirthpass'
   service:
     name: 'mirthconnect'
     file: '/usr/lib/systemd/system/mirthconnect.service'
