@@ -31,9 +31,14 @@ describe 'mirth/install.sls' do
     end
   end
 
+  describe file('/opt/mirthconnect/conf/mirth.properties') do
+    it { should be_file }
+    its(:content) { should_not match('# This file is managed by salt.') }
+  end
+
   describe file('/usr/lib/systemd/system/mirthconnect.service') do
     it { should be_file }
-    its(:content) { should match('# This file is managed by salt.') }
+    its(:content) { should match('# This file is managed by salt. Manual changes risk being overwritten.') }
   end
 
   describe service('mirthconnect') do

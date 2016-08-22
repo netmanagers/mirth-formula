@@ -21,7 +21,7 @@ mirth:
     keystore_storepass: '81uWxplDtB'
     keystore_keypass: '81uWxplDtB'
     keystore_type: 'JCEKS'
-    dir_appdata: '/tmp/test/appdata'
+    dir_appdata: 'appdata'
     dir_tempdata: '${dir.appdata}/temp'
     http_port: '8080'
     https_port: '8443'
@@ -104,7 +104,7 @@ mirth:
     database: 'derby'
     database_max_connections: '20'
     database_url: 'jdbc:derby:${dir.appdata}/mirthdb;create=true'
-    database_user: ''
+    database_username: ''
     database_password: ''
   service:
     name: 'mirthconnect'

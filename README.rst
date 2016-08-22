@@ -2,7 +2,7 @@
 mirth-formula
 =============
 
-A saltstack formula to install and configure mirthconnect in Linux, following
+A saltstack formula to install and configure `mirthconnect <https://www.mirth.com/>`_ in Linux, following
 `these instructions <http://www.buddhaesque.com/2015/09/installing-mirth-connect-on-centos-7/>`_.
 Currently only supports installing on CentOS 7 and probably other RedHat family
 members.
@@ -37,5 +37,6 @@ Installs a mirth systemd file and starts the associated mirth service.
 ``mirth.config``
 -----------------
 
-Manages mirth's configuration. See pillar.example and mirth/default.yaml for the possible parameters.
+Manages mirth's configuration. See pillar.example for the possible parameters,
+check mirth/default.yaml for default values.
 
